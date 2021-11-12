@@ -2,6 +2,8 @@
 // 2. Writing function to send the call to the API (i.e. send the data entered in the search bar to the API for corresponding city name)
 // 3. Recieving data from server in JSON format (temperature and current weather)
 
+// By default jQuery uses dollar sign for "jQuery"
+// 
 $(document).ready(function() {
     // Add action listener to the submit button:
     $("#form-submit").submit(function(event){
@@ -16,12 +18,13 @@ function performSearch(event) {
 
     // Store the AJAX reply to a variable:
     request = $.ajax({
-        url: 'api.openweathermap.org/data/2.5/weather',
+        url: 'https://api.openweathermap.org/data/2.5/weather',
         type: "GET", 
         data: {
             q:$("#city").val(),
             appid: '5a06e83b80efa524f2ae2db351486e3f'
         }
+        
     });
 
     request.done(function(response) {
@@ -38,14 +41,3 @@ function performSearch(event) {
         $("#weather-desc").text(city_weather);
     }
 }
-
-// Accu Weather API Key -  	TmixvTdeOLafomiw1Ie5cgbrBYP0duCW 
-// URL: http://dataservice.accuweather.com/locations/v1/cities/search
-
-
-// url: 'api.openweathermap.org/data/2.5/weather',
-//         type: "GET", 
-//         data: {
-//             q:$("#city").val(),
-//             appid: '5a06e83b80efa524f2ae2db351486e3f'
-//         }
